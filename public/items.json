@@ -1,0 +1,51 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Fruits & Vegetables",
+      "items": [
+        {
+          "id": 1,
+          "name": "Avocado",
+          "note": "This is a note"
+        },
+        {
+          "id": 2,
+          "name": "Banana",
+          "note": "This is a note"
+        },
+        {
+          "id": 3,
+          "name": "Bunch of carrots 5pcs",
+          "note": "This is a note"
+        },
+        {
+          "id": 4,
+          "name": "Pre-cooked corn 450g",
+          "note": "This is a note"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Meat & Fish",
+      "items": [
+        {
+          "id": 1,
+          "name": "Beef",
+          "note": "This is a note"
+        },
+        {
+          "id": 2,
+          "name": "Chicken",
+          "note": "This is a note"
+        },
+        {
+          "id": 3,
+          "name": "Pork",
+          "note": "This is a note"
+        }
+      ]
+    }
+  ]
+}
