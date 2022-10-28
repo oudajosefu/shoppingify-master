@@ -70,11 +70,17 @@ const Home: NextPage = () => {
         </main>
 
         <aside className={`ml-16 p-4 fixed inset-0 rounded-l-2xl bg-shopping-list-light dark:bg-shopping-list-dark text-shopping-list-text dark:text-shopping-list-text-dark font-medium transition-all duration-200 ${isCartPressed || 'invisible translate-x-1/4 opacity-0'}`}>
-          <div className='flex items-center'>
-            <Image src='/source.svg' alt='bottle logo' width={81} height={135} />
-            <div>
+          <div className='flex items-center justify-between gap-6 bg-shopping-list-banner rounded-3xl px-4'>
+            <div className='flex -translate-y-4'>
+              <Image
+                src='/source.svg'
+                alt='bottle logo'
+                width={81}
+                height={135} />
+            </div>
+            <div className='flex flex-col gap-2 flex-1'>
               <h3>Didn&apos;t find what you need?</h3>
-              <button className=''>
+              <button className='self-start bg-primary-light dark:bg-primary-dark text-shopping-list-text-dark dark:text-shopping-list-text-light py-2 px-5 rounded-xl text-sm font-bold hover:scale-110 active:scale-100 transition-all shadow-shopping-cart-light dark:shadow-shopping-cart-dark'>
                 Add item
               </button>
             </div>

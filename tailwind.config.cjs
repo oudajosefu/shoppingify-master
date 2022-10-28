@@ -19,6 +19,7 @@ module.exports = {
         'shopping-list-dark': 'hsl(241, 22%, 30%)',
         'shopping-list-text-light': 'hsl(250, 6%, 21%)',
         'shopping-list-text-dark': 'hsl(250, 6%, 85%)',
+        'shopping-list-banner': 'hsl(340, 28%, 39%)',
       },
       fontFamily: {
         'quicksand': ['Quicksand', 'sans-serif'],
