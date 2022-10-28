@@ -23,6 +23,21 @@
           "id": 4,
           "name": "Pre-cooked corn 450g",
           "note": "This is a note"
+        },
+        {
+          "id": 5,
+          "name": "Mandarin Nadorcott",
+          "note": "This is a note"
+        },
+        {
+          "id": 6,
+          "name": "Piele de Sapo Melon",
+          "note": "This is a note"
+        },
+        {
+          "id": 7,
+          "name": "Watermelon",
+          "note": "This is a note"
         }
       ]
     },
@@ -32,17 +47,73 @@
       "items": [
         {
           "id": 1,
-          "name": "Beef",
+          "name": "Chicken leg box",
           "note": "This is a note"
         },
         {
           "id": 2,
-          "name": "Chicken",
+          "name": "Chicken 1kg",
           "note": "This is a note"
         },
         {
           "id": 3,
-          "name": "Pork",
+          "name": "Pork fillets 450g",
+          "note": "This is a note"
+        },
+        {
+          "id": 4,
+          "name": "Salmon",
+          "note": "This is a note"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Beverages",
+      "items": [
+        {
+          "id": 1,
+          "name": "Beer",
+          "note": "This is a note"
+        },
+        {
+          "id": 2,
+          "name": "Water",
+          "note": "This is a note"
+        },
+        {
+          "id": 3,
+          "name": "Wine",
+          "note": "This is a note"
+        },
+        {
+          "id": 4,
+          "name": "Juice",
+          "note": "This is a note"
+        },
+        {
+          "id": 5,
+          "name": "Milk",
+          "note": "This is a note"
+        },
+        {
+          "id": 6,
+          "name": "Coffee",
+          "note": "This is a note"
+        },
+        {
+          "id": 7,
+          "name": "Tea",
+          "note": "This is a note"
+        },
+        {
+          "id": 8,
+          "name": "Soda",
+          "note": "This is a note"
+        },
+        {
+          "id": 9,
+          "name": "Energy drink",
           "note": "This is a note"
         }
       ]

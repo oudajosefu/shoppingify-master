@@ -7,14 +7,11 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import AsideButtons from "../components/AsideButtons";
 import ItemsCategory from "../components/ItemsCategory";
+import Link from "next/link";
+import itemsJson from "../../public/items.json";
+import ItemCard from "../components/ItemCard";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  return {
-    props: {}
-  };
-};
-
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = () => {
+const Home: NextPage = () => {
   // const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
   const [asideSelection, setAsideSelection] = useState(
@@ -24,6 +21,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = () => {
       statistics: false,
     }
   );
+  const [isCartPressed, setIsCartPressed] = useState(false);
 
   return (
     <>
@@ -35,16 +33,54 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = () => {
 
       <div className='flex'>
         <aside className='fixed grid grid-rows-[auto_1fr_auto] items-center h-screen w-16 py-4 bg-aside-light dark:bg-aside-dark text-primary-light dark:text-primary-dark fill-primary-light dark:fill-primary-dark shadow-2xl'>
-          <Image className='self-start' src='/logo.svg' alt='logo' width={40} height={38} />
+          <Link
+            href='/'>
+            <a className='flex mx-auto'>
+              <Image className='self-start rounded-full' src='/logo.svg' alt='logo' width={40} height={38} />
+            </a>
+          </Link>
           <AsideButtons asideSelection={asideSelection} setAsideSelection={setAsideSelection} />
-          <button className='justify-self-center transition-all duration-100 ease-linear bg-custom-orange rounded-full p-2 hover:shadow-shopping-cart dark:hover:shadow-shopping-cart-dark hover:scale-110 active:scale-105'>
+          <button
+            className='justify-self-center transition-all duration-100 ease-linear bg-custom-orange rounded-full p-2 hover:shadow-shopping-cart dark:hover:shadow-shopping-cart-dark hover:scale-110 active:scale-105'
+            onClick={() => setIsCartPressed(!isCartPressed)}>
             <ShoppingCartIcon className='w-5 h-5 stroke-2 text-white drop-shadow' />
           </button>
         </aside>
 
-        <main className='ml-16 px-3 py-9 flex-1 min-h-screen flex flex-col text-primary-light dark:text-primary-dark'>
-          <ItemsCategory categoryTitle='Fruit and vegetables' />
+        <main className='ml-16 px-3 py-9 flex-1 min-h-screen flex flex-col text-primary-light dark:text-primary-dark space-y-4'>
+          {asideSelection.items && (
+            <>
+              {itemsJson.categories.map((category) => (
+                <ItemsCategory key={category.id} categoryTitle={category.name}>
+                  {category.items.map((item) => (
+                    <ItemCard key={item.id} title={item.name} />
+                  ))}
+                </ItemsCategory>
+              ))}
+            </>
+          )}
+          {asideSelection.history && (
+            <>
+            </>
+          )}
+          {asideSelection.statistics && (
+            <>
+            </>
+          )}
         </main>
+
+        <aside className={`ml-16 p-4 fixed inset-0 rounded-l-2xl bg-shopping-list-light dark:bg-shopping-list-dark text-shopping-list-text dark:text-shopping-list-text-dark font-medium transition-all duration-200 ${isCartPressed || 'invisible translate-x-1/4 opacity-0'}`}>
+          <div className='flex items-center'>
+            <Image src='/source.svg' alt='bottle logo' width={81} height={135} />
+            <div>
+              <h3>Didn&apos;t find what you need?</h3>
+              <button className=''>
+                Add item
+              </button>
+            </div>
+          </div>
+          <h2 className='text-2xl font-bold'>Shopping List</h2>
+        </aside>
       </div>
     </>
   );

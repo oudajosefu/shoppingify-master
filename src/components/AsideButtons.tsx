@@ -58,7 +58,7 @@ const AsideButtons: React.FC<Props> = ({ asideSelection, setAsideSelection }) =>
 
       <div className="flex relative">
         <button
-          className='flex px-4 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer'
+          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset'
           id='items'
           onClick={onAsideSelect}>
           <ListBulletIcon className='w-6 h-6' />
@@ -69,7 +69,7 @@ const AsideButtons: React.FC<Props> = ({ asideSelection, setAsideSelection }) =>
       </div>
       <div className="flex relative">
         <button
-          className='flex px-4 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer'
+          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset'
           id='history'
           onClick={onAsideSelect}>
           <span className='material-symbols-outlined'>replay</span>
@@ -80,7 +80,7 @@ const AsideButtons: React.FC<Props> = ({ asideSelection, setAsideSelection }) =>
       </div>
       <div className="flex relative">
         <button
-          className='flex px-4 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer'
+          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset'
           id='statistics'
           onClick={onAsideSelect}>
           <ChartBarSquareIcon className='w-6 h-6' />
