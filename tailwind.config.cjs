@@ -20,13 +20,16 @@ module.exports = {
         'shopping-list-text-light': 'hsl(250, 6%, 21%)',
         'shopping-list-text-dark': 'hsl(250, 6%, 85%)',
         'shopping-list-banner': 'hsl(340, 28%, 39%)',
+        'shopping-list-category-title': 'hsl(0, 0%, 51%)',
+        'item-card-light': 'hsl(0, 0%, 100%)',
+        'item-card-dark': 'hsl(241, 22%, 23%)',
       },
       fontFamily: {
         'quicksand': ['Quicksand', 'sans-serif'],
       },
       boxShadow: {
-        'shopping-cart': '0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%)',
-        'shopping-cart-dark': '0 1px 3px 0 rgb(60 64 67 / 80%), 0 4px 8px 3px rgb(60 64 67 / 65%)',
+        'shopping-cart-light': '0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%)',
+        'shopping-cart-dark': '0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 35%)',
         'item-card': '0px 2px 12px 0px #0000000D'
       }
     },
