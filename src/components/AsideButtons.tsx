@@ -58,34 +58,34 @@ const AsideButtons: React.FC<Props> = ({ asideSelection, setAsideSelection }) =>
 
       <div className="flex relative">
         <button
-          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset'
+          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset hover:text-custom-orange hover:scale-125 active:scale-100 transition-all'
           id='items'
           onClick={onAsideSelect}>
           <ListBulletIcon className='w-6 h-6' />
         </button>
-        <div role='tooltip' className='absolute invisible opacity-0 text-primary-dark peer-hover:visible peer-hover:opacity-100 transition-opacity duration-300 delay-1000 bg-tooltip rounded-md py-1 px-4 top-1/2 left-full ml-2 -translate-y-1/2 before:content-[""] before:absolute before:border-[6px] before:border-y-[5px] before:border-y-transparent before:border-l-transparent before:right-full before:top-1/2 before:-translate-y-1/2 before:border-tooltip'>
+        <div role='tooltip' className='absolute invisible opacity-0 text-primary-dark peer-hover:visible peer-hover:opacity-100 transition-opacity duration-300 delay-1000 bg-tooltip rounded-md py-1 px-4 top-1/2 left-full ml-4 -translate-y-1/2 before:content-[""] before:absolute before:border-[6px] before:border-y-[5px] before:border-y-transparent before:border-l-transparent before:right-full before:top-1/2 before:-translate-y-1/2 before:border-tooltip z-50'>
           items
         </div>
       </div>
       <div className="flex relative">
         <button
-          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset'
+          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset hover:text-custom-orange hover:scale-125 active:scale-100 transition-all select-none'
           id='history'
           onClick={onAsideSelect}>
           <span className='material-symbols-outlined'>replay</span>
         </button>
-        <div role='tooltip' className='absolute invisible opacity-0 text-primary-dark peer-hover:visible peer-hover:opacity-100 transition-opacity duration-300 delay-1000 bg-tooltip rounded-md py-1 px-4 top-1/2 left-full ml-2 -translate-y-1/2 before:content-[""] before:absolute before:border-[6px] before:border-y-[5px] before:border-y-transparent before:border-l-transparent before:right-full before:top-1/2 before:-translate-y-1/2 before:border-tooltip'>
+        <div role='tooltip' className='absolute invisible opacity-0 text-primary-dark peer-hover:visible peer-hover:opacity-100 transition-opacity duration-300 delay-1000 bg-tooltip rounded-md py-1 px-4 top-1/2 left-full ml-4 -translate-y-1/2 before:content-[""] before:absolute before:border-[6px] before:border-y-[5px] before:border-y-transparent before:border-l-transparent before:right-full before:top-1/2 before:-translate-y-1/2 before:border-tooltip'>
           history
         </div>
       </div>
       <div className="flex relative">
         <button
-          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset'
+          className='flex px-3 py-2 justify-center relative hover:bg-slate-400 dark:hover:bg-slate-200 hover:bg-opacity-20 active:bg-opacity-30 dark:hover:bg-opacity-20 dark:active:bg-opacity-30 rounded-lg peer outline-none focus:ring focus:ring-inset hover:text-custom-orange hover:scale-125 active:scale-100 transition-all'
           id='statistics'
           onClick={onAsideSelect}>
           <ChartBarSquareIcon className='w-6 h-6' />
         </button>
-        <div role='tooltip' className='absolute invisible opacity-0 text-primary-dark peer-hover:visible peer-hover:opacity-100 transition-opacity duration-300 delay-1000 bg-tooltip rounded-md py-1 px-4 top-1/2 left-full ml-2 -translate-y-1/2 before:content-[""] before:absolute before:border-[6px] before:border-y-[5px] before:border-y-transparent before:border-l-transparent before:right-full before:top-1/2 before:-translate-y-1/2 before:border-tooltip'>
+        <div role='tooltip' className='absolute invisible opacity-0 text-primary-dark peer-hover:visible peer-hover:opacity-100 transition-opacity duration-300 delay-1000 bg-tooltip rounded-md py-1 px-4 top-1/2 left-full ml-4 -translate-y-1/2 before:content-[""] before:absolute before:border-[6px] before:border-y-[5px] before:border-y-transparent before:border-l-transparent before:right-full before:top-1/2 before:-translate-y-1/2 before:border-tooltip'>
           statistics
         </div>
       </div>

@@ -4,15 +4,36 @@ import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AsideButtons from "../components/AsideButtons";
 import ItemsCategory from "../components/ItemsCategory";
 import Link from "next/link";
 import itemsJson from "../../public/items.json";
 import ItemCard from "../components/ItemCard";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import { useTheme } from "next-themes";
+import ShoppingList from "../components/ShoppingList";
+import ListCategory from "../components/ListCategory";
+
+export type CartCategory = {
+  name: 'Fruits & Vegetables' | 'Meat & Fish' | 'Beverages';
+  items: CartItem[];
+};
+
+export type CartItem = {
+  category: string;
+  name: string;
+  quantity: number;
+};
 
 const Home: NextPage = () => {
   // const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+  // System Dark Mode
+  const { theme, systemTheme, setTheme } = useTheme();
+
+  // Remove next two lines and if (!mounted) line if page is not SSR
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const [asideSelection, setAsideSelection] = useState(
     {
@@ -22,7 +43,23 @@ const Home: NextPage = () => {
     }
   );
   const [isCartPressed, setIsCartPressed] = useState(false);
+  const [cartItems, setCartItems] = useState<CartCategory[]>([
+    {
+      name: 'Fruits & Vegetables',
+      items: [],
+    },
+    {
+      name: 'Meat & Fish',
+      items: [],
+    },
+    {
+      name: 'Beverages',
+      items: [],
+    }
+  ]);
+  console.log(cartItems);
 
+  if (!mounted) return null;
   return (
     <>
       <Head>
@@ -31,17 +68,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/devchallenges.png" />
       </Head>
 
-      <div className='flex'>
-        <aside className='fixed grid grid-rows-[auto_1fr_auto] items-center h-screen w-16 py-4 bg-aside-light dark:bg-aside-dark text-primary-light dark:text-primary-dark fill-primary-light dark:fill-primary-dark shadow-2xl'>
-          <Link
-            href='/'>
-            <a className='flex mx-auto'>
-              <Image className='self-start rounded-full' src='/logo.svg' alt='logo' width={40} height={38} />
-            </a>
-          </Link>
+      <div className='flex isolate'>
+        <aside className='fixed grid grid-rows-[auto_1fr_auto] items-center h-screen w-16 py-4 bg-aside-light dark:bg-aside-dark text-primary-light dark:text-primary-dark fill-primary-light dark:fill-primary-dark shadow-xl'>
+          <div className='justify-self-center flex flex-col items-center gap-4'>
+            <Link
+              href='/'>
+              <a className='flex mx-auto'>
+                <Image className='self-start rounded-full' src='/logo.svg' alt='logo' width={40} height={38} />
+              </a>
+            </Link>
+            <button className={`justify-self-center transition-all hover:scale-125 active:scale-100`} onClick={() =>
+              setTheme(theme === 'dark' ? 'light' : 'dark')}>
+              {theme === 'dark' ? <SunIcon className='w-7 h-7' /> : <MoonIcon className='w-7 h-7' />}
+            </button>
+          </div>
           <AsideButtons asideSelection={asideSelection} setAsideSelection={setAsideSelection} />
           <button
-            className='justify-self-center transition-all duration-100 ease-linear bg-custom-orange rounded-full p-2 hover:shadow-shopping-cart dark:hover:shadow-shopping-cart-dark hover:scale-110 active:scale-105'
+            className='justify-self-center transition-all duration-100 ease-linear bg-custom-orange rounded-full p-2 hover:shadow-shopping-cart-light dark:hover:shadow-shopping-cart-dark hover:scale-125 active:scale-100'
             onClick={() => setIsCartPressed(!isCartPressed)}>
             <ShoppingCartIcon className='w-5 h-5 stroke-2 text-white drop-shadow' />
           </button>
@@ -53,7 +96,12 @@ const Home: NextPage = () => {
               {itemsJson.categories.map((category) => (
                 <ItemsCategory key={category.id} categoryTitle={category.name}>
                   {category.items.map((item) => (
-                    <ItemCard key={item.id} title={item.name} />
+                    <ItemCard
+                      key={item.id}
+                      title={item.name}
+                      categoryTitle={category.name}
+                      setCartItems={setCartItems}
+                    />
                   ))}
                 </ItemsCategory>
               ))}
@@ -69,7 +117,7 @@ const Home: NextPage = () => {
           )}
         </main>
 
-        <aside className={`ml-16 p-4 fixed inset-0 rounded-l-2xl bg-shopping-list-light dark:bg-shopping-list-dark text-shopping-list-text dark:text-shopping-list-text-dark font-medium transition-all duration-200 ${isCartPressed || 'invisible translate-x-1/4 opacity-0'}`}>
+        <aside className={`ml-16 p-4 fixed inset-0 space-y-4 rounded-l-3xl bg-shopping-list-light dark:bg-shopping-list-dark text-shopping-list-text-light dark:text-shopping-list-text-dark font-medium transition-all duration-200 z-40 ${isCartPressed || 'invisible translate-x-1/2 opacity-0'}`}>
           <div className='flex items-center justify-between gap-6 bg-shopping-list-banner rounded-3xl px-4'>
             <div className='flex -translate-y-4'>
               <Image
@@ -78,14 +126,24 @@ const Home: NextPage = () => {
                 width={81}
                 height={135} />
             </div>
-            <div className='flex flex-col gap-2 flex-1'>
+            <div className='flex flex-col justify-between gap-2 flex-1 text-shopping-list-text-dark'>
               <h3>Didn&apos;t find what you need?</h3>
-              <button className='self-start bg-primary-light dark:bg-primary-dark text-shopping-list-text-dark dark:text-shopping-list-text-light py-2 px-5 rounded-xl text-sm font-bold hover:scale-110 active:scale-100 transition-all shadow-shopping-cart-light dark:shadow-shopping-cart-dark'>
+              <button className='self-start bg-shopping-list-light dark:bg-shopping-list-dark text-shopping-list-text-light dark:text-shopping-list-text-dark py-2 px-5 rounded-xl text-sm font-bold hover:scale-125 active:scale-100 transition-all shadow-shopping-cart-light dark:shadow-shopping-cart-dark'>
                 Add item
               </button>
             </div>
           </div>
-          <h2 className='text-2xl font-bold'>Shopping List</h2>
+          <ShoppingList>
+            {cartItems.map((category) => (
+              <ListCategory key={category.name} categoryTitle={category.name}>
+                {category.items.map((item) => (
+                  <div key={item.name}>
+                    <p>{item.name} - {item.quantity}</p>
+                  </div>
+                ))}
+              </ListCategory>
+            ))}
+          </ShoppingList>
         </aside>
       </div>
     </>
